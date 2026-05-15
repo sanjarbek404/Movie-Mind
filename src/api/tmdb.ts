@@ -12,7 +12,7 @@ if (!API_KEY || API_KEY === "YOUR_TMDB_API_KEY") {
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export async function fetchMovies(page: number): Promise<{ results: Movie[]; total_pages: number }> {
-  const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
+  const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false`;
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error("Failed to fetch movies from TMDB");
@@ -22,7 +22,7 @@ export async function fetchMovies(page: number): Promise<{ results: Movie[]; tot
 }
 
 export async function searchMovies(query: string, page: number = 1): Promise<{ results: Movie[]; total_pages: number }> {
-  const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page}`;
+  const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page}&include_adult=false`;
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error("Failed to search movies from TMDB");
@@ -37,7 +37,6 @@ const UZBEK_GENRE_MAP: Record<number, string> = {
   16: "Animasiya",
   35: "Komediya",
   80: "Kriminal",
-  99: "Hujjatli",
   18: "Drama",
   10751: "Oklaviy",
   14: "Fantastika",
@@ -60,7 +59,7 @@ export async function fetchGenres(): Promise<{ id: number; name: string }[]> {
     return [];
   }
   const data = await res.json();
-  const genres = data.genres || [];
+  const genres = (data.genres || []).filter((g: any) => g.id !== 99);
   
   // Translate to Uzbek manually
   return genres.map((g: any) => ({
@@ -71,8 +70,8 @@ export async function fetchGenres(): Promise<{ id: number; name: string }[]> {
 
 export async function fetchMoviesByGenre(page: number, genreId?: number): Promise<{ results: Movie[]; total_pages: number }> {
   const url = genreId 
-    ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreId}`
-    : `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
+    ? `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreId}&include_adult=false`
+    : `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false`;
     
   const res = await fetch(url);
   if (!res.ok) {
