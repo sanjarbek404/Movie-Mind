@@ -2,7 +2,7 @@
 
 MovieMind - bu eng so'nggi va ommabop kinolarni izlash, ma'lumot olish va saqlash imkonini beruvchi zamonaviy web-ilova. Loyiha to'liq **O'zbek tilida** ishlab chiqilgan bo'lib, foydalanuvchilarga qulay va tezkor tajriba taqdim etadi.
 
-Dastur **TMDb API** asosida ishlaydi va zamonaviy web-texnologiyalar yordamida yaratilgan.
+Loyiha **TMDb API** asosida ishlaydi va zamonaviy web-texnologiyalar yordamida yaratilgan.
 
 ## 🚀 Imkoniyatlar
 
