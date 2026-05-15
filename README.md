@@ -5,7 +5,7 @@ MovieMind - bu eng so'nggi va ommabop kinolarni izlash, ma'lumot olish va saqlas
 Loyiha **TMDb API** asosida ishlaydi va zamonaviy web-texnologiyalar yordamida yaratilgan.
 
 ## 🚀 Imkoniyatlar
-
+ Loyihani  Live ko`rish: https://sanjarbek404.github.io/Movie-Mind/
 - **Eng so'nggi va ommabop kinolar:** Har doim yangi va reytingi baland kinolardan xabardor bo'ling.
 - **Qidiruv:** Istalgan kinoni nomi orqali tez va oson toping.
 - **Janrlar bo'yicha filtrlash:** Kinolarni o'zingiz yoqtirgan janrlar bo'yicha ajratib oling.
